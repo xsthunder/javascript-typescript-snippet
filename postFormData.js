@@ -11,7 +11,6 @@ const postFormData = (url, obj, instance)=>{
     return instance('', { 
         method: 'post', 
         url: url, 
-   
         headers: {'Content-Type': 'multipart/form-data' } 
     })        
 }
