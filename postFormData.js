@@ -8,10 +8,10 @@
 const postFormData = (url, obj, instance)=>{
     const bodyFormData = new FormData(); 
     Object.entries(obj).map(([k,v])=>bodyFormData.set(k,v)); 
-    return instance('', { 
+    return axios(url, { 
         method: 'post', 
-        url: url, 
-        headers: {'Content-Type': 'multipart/form-data' } 
+        headers: {'Content-Type': 'multipart/form-data' },
+        data:data
     })        
 }
 
