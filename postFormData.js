@@ -15,3 +15,26 @@ const postFormData = (url, obj, instance)=>{
     })        
 }
 
+/**
+  * use in angluar > 8, with ob converted to ob.data
+  * need IData interface
+  */
+import { HttpClient } from '@angular/common/http'
+@Injectable({
+  providedIn: 'root'
+})
+export default Myservice{
+ constructor(private http: HttpClient) { }
+ private postFormData(url, obj: Object): Observable<IData> {
+   const formData = new FormData();
+   Object.entries(obj).map(([k, v]) => formData.set(k, v));
+   return this.http.post(url, formData).pipe(
+     map((ob: Observable<ICommonAPI>) => {
+       const code = ob['code']
+       const info = ob['info']
+       console.log(code, info)
+       return ob['data']
+     })
+   );
+ }
+}
