@@ -2,6 +2,7 @@
  * formData
  * perfers append over set
  ＊can also append files
+ * can append as arrays
  * [FormData.set() - Web APIs | MDN](https://developer.mozilla.org/en-US/docs/Web/API/FormData/set)
  * [FormData.append() - Web APIs | MDN](https://developer.mozilla.org/en-US/docs/Web/API/FormData/append)
  */
@@ -19,7 +20,7 @@ const postFormData = (url, obj)=>{
     return axios(url, { 
         method: 'post', 
         headers: {'Content-Type': 'multipart/form-data' },
-        data:data
+        data:bodyFormData
     })        
 }
 
