@@ -3,6 +3,7 @@
  * perfers append over set
  ＊can also append files
  * can append as arrays
+ * 不使用set，由于chrome从50开始支持set
  * [FormData.set() - Web APIs | MDN](https://developer.mozilla.org/en-US/docs/Web/API/FormData/set)
  * [FormData.append() - Web APIs | MDN](https://developer.mozilla.org/en-US/docs/Web/API/FormData/append)
  */
@@ -16,6 +17,10 @@ const postFormData = (url, obj)=>{
     // 如果在node中
     // var FormData = require('form-data');
     const bodyFormData = new FormData(); 
+    // 不使用set，由于chrome>=50支持set
+    // Object.entries chrome>=54支持
+    // [create-react-app 不支持额外的polyfills，需要手动添加includes no polyfills](https://create-react-app.dev/docs/supported-browsers-features)
+    // 用core-js/es/object/
     Object.entries(obj).map(([k,v])=>bodyFormData.append(k,v)); 
     return axios(url, { 
         method: 'post', 
